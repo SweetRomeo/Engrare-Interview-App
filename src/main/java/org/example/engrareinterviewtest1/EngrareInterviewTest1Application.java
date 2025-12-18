@@ -17,7 +17,7 @@ import java.util.List;
 @SpringBootApplication
 public class EngrareInterviewTest1Application {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(EngrareInterviewTest1Application.class, args);
     }
 
@@ -36,11 +36,13 @@ public class EngrareInterviewTest1Application {
     @Bean
     // application.properties dosyasından API key'i okur
     public ChatLanguageModel geminiModel() {
-        String myApiKey = "AIzaSyD6I9N43YhJdQ9HCrXtQjeU0Jg_04fN09w";
+        String myApiKey = "AIzaSyBoibwGHoC32i9KrXQPNt_dH5L1alUd-kg";
 
         return GoogleAiGeminiChatModel.builder()
                 .apiKey(myApiKey)
-                .modelName("gemini-1.5-flash-001")
+                // DEĞİŞİKLİK BURADA:
+                // Listede gördüğün "models/" kısmını atıp sadece ismini yazıyoruz.
+                .modelName("gemini-2.5-flash")
                 .logRequestsAndResponses(true)
                 .timeout(java.time.Duration.ofMinutes(2))
                 .build();
