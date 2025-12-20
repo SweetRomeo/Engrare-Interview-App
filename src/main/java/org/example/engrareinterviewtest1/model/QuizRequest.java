@@ -1,4 +1,3 @@
 package org.example.engrareinterviewtest1.model;
 
-public class QuizRequest {
-}
+public record QuizRequest(String videoUrl, String language, int questionCount) {}
