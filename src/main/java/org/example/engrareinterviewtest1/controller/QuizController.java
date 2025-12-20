@@ -2,24 +2,38 @@ package org.example.engrareinterviewtest1.controller;
 
 import org.example.engrareinterviewtest1.model.Quiz;
 import org.example.engrareinterviewtest1.model.QuizRequest;
-import org.example.engrareinterviewtest1.service.QuizService;
+// DİKKAT: Yeni servisi import et
+import org.example.engrareinterviewtest1.service.GeminiManualService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/quiz")
-@CrossOrigin(origins = "*") // Frontend erişimi için
+@CrossOrigin(origins = "*")
 public class QuizController {
 
-    private final QuizService quizService;
+    // Eski servis yerine yenisini kullanıyoruz
+    private final GeminiManualService geminiService;
 
-    public QuizController(QuizService quizService) {
-        this.quizService = quizService;
+    public QuizController(GeminiManualService geminiService) {
+        this.geminiService = geminiService;
     }
 
     @PostMapping("/generate")
-    public Quiz generateQuiz(@RequestBody QuizRequest request) {
-        // Controller'ın işi sadece trafiği yönlendirmektir.
-        // İş mantığını Service katmanına devreder.
-        return quizService.processQuizGeneration(request);
+    public ResponseEntity<?> generateQuiz(@RequestBody QuizRequest request) {
+        try {
+            System.out.println("MANUEL İstek alındı. URL: " + request.videoUrl());
+
+            // Yeni metodumuzu çağırıyoruz
+            Quiz result = geminiService.generateQuizManually(request);
+
+            return ResponseEntity.ok(result);
+
+        } catch (Exception e) {
+            System.err.println("!!! HATA OLUŞTU !!!");
+            e.printStackTrace();
+            return ResponseEntity.internalServerError()
+                    .body("Sunucu Hatası: " + e.getMessage());
+        }
     }
 }

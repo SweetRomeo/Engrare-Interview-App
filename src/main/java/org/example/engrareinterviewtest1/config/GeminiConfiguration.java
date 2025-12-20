@@ -1,14 +1,15 @@
 package org.example.engrareinterviewtest1.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
 import dev.langchain4j.service.AiServices;
-import org.example.engrareinterviewtest1.service.QuizAiClient; // Birazdan oluşturacağız
+import org.example.engrareinterviewtest1.service.QuizAiClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.Duration;
+import java.time.Duration; // Bu importun olduğundan emin ol
 
 @Configuration
 public class GeminiConfiguration {
@@ -18,20 +19,23 @@ public class GeminiConfiguration {
 
     @Bean
     public ChatLanguageModel geminiModel() {
-
         return GoogleAiGeminiChatModel.builder()
                 .apiKey(myApiKey)
-                // DEĞİŞİKLİK BURADA:
-                // Listede gördüğün "models/" kısmını atıp sadece ismini yazıyoruz.
                 .modelName("gemini-2.5-flash")
                 .logRequestsAndResponses(true)
-                .timeout(java.time.Duration.ofMinutes(2))
+                // HATA BURADAYDI: Süre yetmiyordu.
+                // Video analizi için süreyi 10 dakikaya çıkarıyoruz.
+                .timeout(Duration.ofMinutes(10))
                 .build();
     }
 
     @Bean
     public QuizAiClient quizAiClient(ChatLanguageModel model) {
-        // LangChain4j'in sihirli değneği: Interface'i alıp çalışan bir servise dönüştürür
         return AiServices.create(QuizAiClient.class, model);
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }
