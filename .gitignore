@@ -34,3 +34,7 @@ build/
 
 ### Properties File ###
 src/main/resources/application.properties
+
+### Firebase Keys ###
+engrareinterviewtest-firebase-service-account.json
+**/engrareinterviewtest-firebase-service-account.json
