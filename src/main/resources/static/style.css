@@ -1,110 +1,291 @@
+/* GENEL AYARLAR */
 body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fdfbf7 0%, #ffece0 100%); /* Pastel geçişli arka plan */
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     color: #333;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.hidden-card {
+    display: none !important;
+}
+
+/* ORTA KONTEYNER */
 .app-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 1. GİRİŞ EKRANI */
+.header h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.url-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+.url-input:focus {
+    border-color: #e67e22;
+}
+
+/* BUTONLAR */
+.primary-btn {
+    background-color: #e67e22; /* Koyu turuncu */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+}
+
+.primary-btn:hover {
+    background-color: #d35400;
+    transform: translateY(-2px);
+}
+
+.primary-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.secondary-btn {
+    background-color: #fcece4;
+    color: #e67e22;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.text-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #666;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* 2. SORU KARTI TASARIMI (Görsel 1 Referanslı) */
+.card {
+    background: transparent; /* Kartın kendisi şeffaf, içindekiler kutulu */
+    width: 100%;
     text-align: center;
 }
 
-.header h1 { color: #1a73e8; margin-bottom: 10px; }
-
-.section {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 30px;
+.question-text {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
 }
 
-/* Gizleme sınıfı (jQuery ile açıp kapatacağız) */
-.hidden { display: none; }
-
-.url-input {
-    width: 60%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.generate-btn {
-    padding: 12px 24px;
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.generate-btn:hover { background-color: #1557b0; }
-
-/* Loading Spinner */
-.spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #1a73e8;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
-    margin: 0 auto 20px;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* Sorular */
-.question-card {
-    text-align: left;
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
 }
 
 .option-btn {
-    padding: 12px;
-    background-color: #f8f9fa;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    cursor: pointer;
+    background-color: white;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    border-radius: 12px;
     text-align: left;
-}
-
-.option-btn:hover { background-color: #e2e6ea; }
-
-/* Seçilen şıkkın rengi */
-.option-btn.selected {
-    background-color: #e8f0fe;
-    border-color: #1a73e8;
-    color: #1a73e8;
-    font-weight: bold;
-}
-
-.finish-btn {
-    background-color: #34a853;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
     cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
-.score-display {
-    font-size: 48px;
+.option-btn:hover, .option-btn.selected {
+    border-color: #e67e22;
+    background-color: #fff8f5;
+}
+
+.option-prefix {
+    background-color: #eab592; /* Pastel turuncu harf kutusu */
+    color: white;
     font-weight: bold;
-    color: #34a853;
-    margin: 20px 0;
+    border-radius: 6px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 0.8rem;
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* 3. TEBRİKLER EKRANI (Görsel 2 Referanslı) */
+.reward-title {
+    color: #d35400;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.reward-subtitle {
+    color: #e67e22;
+    font-size: 1.5rem;
+    margin: 5px 0 20px 0;
+}
+
+.star-badge {
+    font-size: 60px;
+    color: white;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 10px 20px rgba(253, 160, 133, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.points {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #d35400;
+    margin: 0;
+}
+
+.reward-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+/* PROGRESS BAR (User Profile Level) */
+.user-profile-bar {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #e67e22;
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.counter-text {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* SPINNER */
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #e67e22;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- YENİ EKLENECEK KISIM (Doğru/Yanlış Renkleri) --- */
+
+/* Doğru cevap stili (Yeşil) */
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    font-weight: bold;
+}
+
+/* Yanlış cevap stili (Kırmızı) */
+.option-btn.wrong {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
 }

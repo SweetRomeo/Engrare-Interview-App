@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Quiz</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+
+    <div id="input-section" class="section">
+        <header class="header">
+            <h1>🎬 AI Quiz Generator</h1>
+            <p>Video linkini yapıştır, yapay zeka sınav yapsın.</p>
+        </header>
+        <div class="input-group">
+            <input type="text" id="video-url" class="url-input" placeholder="Youtube video linki...">
+        </div>
+        <button id="generate-btn" class="primary-btn">Quiz Oluştur ✨</button>
+    </div>
+
+    <div id="loading-section" class="section hidden">
+        <div class="spinner"></div>
+        <h2>Yapay zeka videoyu izliyor...</h2>
+        <p>Sorular hazırlanıyor, lütfen bekleyin.</p>
+    </div>
+
+    <div id="quiz-section" class="section hidden">
+        <div id="question-card" class="card">
+            <h3 id="question-text" class="question-text">Soru metni yükleniyor...</h3>
+
+            <div id="options-container" class="options-container">
+            </div>
+
+            <div class="footer-actions">
+                <button class="text-btn">Cevabı Göster</button>
+                <button id="check-answer-btn" class="primary-btn small-btn" disabled>Kontrol Et</button>
+            </div>
+        </div>
+
+        <div id="reward-card" class="card hidden-card">
+            <h2 class="reward-title">DOĞRU CEVAP!</h2>
+            <p class="reward-subtitle">Tebrikler!</p>
+
+            <div class="badge-container">
+                <div class="star-badge">★</div>
+            </div>
+
+            <p class="points">+50 <span style="font-size: 0.6em; color: #666;">Kariyer Puanı</span></p>
+
+            <div class="reward-actions">
+                <button id="next-btn" class="primary-btn">Sonraki Soru</button>
+                <button class="secondary-btn">Başarını Paylaş</button>
+            </div>
+
+            <div class="user-profile-bar">
+                <div class="user-info">
+                    <div class="avatar">👤</div>
+                    <span>User Profile Level</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="question-counter" class="counter-text">1/5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result-section" class="section hidden">
+        <h2>🎉 Test Tamamlandı!</h2>
+        <div class="final-score-box">
+            <span id="score-display">0</span> Puan
+        </div>
+        <button id="restart-btn" class="primary-btn">Yeni Video Dene</button>
+    </div>
+
+</div>
+
+<script th:src="@{/script.js}"></script>
+</body>
+</html>
