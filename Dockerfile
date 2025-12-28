@@ -1,28 +1,22 @@
-# --- 1. AŞAMA: Projeyi Derleme (Build) ---
-# Maven ve Java 17 yüklü bir sanal makine kullan
-FROM maven:3.8.5-openjdk-17 AS build
+# --- 1. AŞAMA: Java 21 ve Maven ile Derleme ---
+# Maven 3.9 ve Java 21 (Eclipse Temurin) yüklü imaj
+FROM maven:3.9-eclipse-temurin-21 AS build
 
-# Çalışma klasörünü ayarla
 WORKDIR /app
-
-# Projedeki tüm dosyaları sanal makineye kopyala
 COPY . .
 
-# Testleri atlayarak projeyi derle (hata almamak için testleri geçiyoruz)
+# Testleri atlayarak derle
 RUN mvn clean package -DskipTests
 
-# --- 2. AŞAMA: Çalıştırma (Run) ---
-# Sadece Java'nın olduğu daha hafif bir sanal makineye geç
-FROM openjdk:17-jdk-slim
+# --- 2. AŞAMA: Çalıştırma ---
+# Uygulamayı çalıştırmak için Java 21 (Eclipse Temurin)
+FROM eclipse-temurin:21-jdk-jammy
 
-# Çalışma klasörünü ayarla
 WORKDIR /app
 
-# İlk aşamada derlenen .jar dosyasını buraya al ve ismini app.jar yap
+# Derlenen dosyayı kopyala
 COPY --from=build /app/target/*.jar app.jar
 
-# Uygulamanın çalışacağı portu belirt (Render genelde 8080 kullanır)
 EXPOSE 8080
 
-# Uygulamayı başlat
 ENTRYPOINT ["java","-jar","app.jar"]
