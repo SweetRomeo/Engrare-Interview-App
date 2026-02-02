@@ -47,8 +47,12 @@ You only need **Java (JDK 17+)** installed on your machine. **Node.js or npm is 
 ```bash
 git clone [https://github.com/SweetRomeo/Engrare-Interview-App.git](https://github.com/SweetRomeo/Engrare-Interview-App.git)
 cd Engrare-Interview-App
-
+```
 #### 2. Start the App (Local)
 The easiest way is to use your favorite IDE (IntelliJ IDEA, Eclipse) or Terminal:
-'''bash
+Mac/Linux:
+```bash
 ./mvnw spring-boot:run
+```
+
+
