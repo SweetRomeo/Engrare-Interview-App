@@ -61,5 +61,53 @@ The easiest way is to use your favorite IDE (IntelliJ IDEA, Eclipse) or Terminal
 mvnw spring-boot:run
 ```
 
+#### 3. Open in Browser
+Visit: `http://localhost:8080`
+
+### ☁️ Deployment (Render)
+This application is optimized for Render. It uses the `Dockerfile` in the root directory to build the image.
+
+1.  Connect your GitHub repo to Render.
+2.  Select **"Docker"** as the Environment.
+3.  Render will automatically build and deploy the app.
+
+---
+
+<a name="-türkçe"></a>
+## 🇹🇷 Türkçe
+
+### 🎯 Proje Hakkında
+
+**Video2Quiz**, eğitim videolarını "pasif izleme" eylemini "aktif öğrenme"ye dönüştürmek amacıyla geliştirilmiş yapay zeka destekli bir araçtır. Kullanıcı bir video linki (örneğin YouTube) girdiğinde, uygulama arka planda içeriği analiz eder ve izleyicinin konuyu anlayıp anlamadığını ölçen çoktan seçmeli soruları otomatik olarak üretir.
+
+Bu proje, frontend ve backend'in tek bir çatı altında toplandığı **Monolitik** bir mimariye sahiptir ve şu anda **Render** üzerinde canlı olarak çalışmaktadır.
+
+🚀 **Canlı Demo:** [video2quiz.engrare.com](https://video2quiz.engrare.com/)
+
+### ✨ Özellikler
+
+* **🔍 Akıllı İçerik Analizi:** Video içeriğini tarar ve bağlama uygun sorular çıkarır.
+* **⚡ Tak-Çalıştır (Plug & Play):** Frontend, Spring Boot içerisine gömülüdür. Ayrı bir kurulum gerektirmez.
+* **☁️ Bulut Tabanlı:** Render altyapısı üzerinde Docker konteynerleri ile çalışır.
+* **📱 Responsive Arayüz:** Mobil ve masaüstü cihazlarla tam uyumlu modern tasarım.
+
+### 🛠 Teknoloji Yığını
+
+| Alan | Teknoloji | Açıklama |
+| :--- | :--- | :--- |
+| **Backend** | Java 17+, Spring Boot | Ana uygulama çatısı ve REST API |
+| **Frontend** | HTML5, CSS3, JS | Thymeleaf/Static Resources ile sunulur |
+| **Sunucu** | Render | Cloud Platform (PaaS) |
+| **Dağıtım** | Docker | Konteynerizasyon |
+
+### 🚀 Kurulum ve Çalıştırma
+
+Bu projeyi çalıştırmak için bilgisayarınızda sadece **Java (JDK 17 veya üzeri)** yüklü olması yeterlidir. Node.js veya npm kurulumuna **gerek yoktur.**
+
+#### 1. Projeyi Klonlayın
+```bash
+git clone [https://github.com/SweetRomeo/Engrare-Interview-App.git](https://github.com/SweetRomeo/Engrare-Interview-App.git)
+cd Engrare-Interview-App
+
 
 
