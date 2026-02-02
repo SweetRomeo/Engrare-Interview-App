@@ -50,9 +50,16 @@ cd Engrare-Interview-App
 ```
 #### 2. Start the App (Local)
 The easiest way is to use your favorite IDE (IntelliJ IDEA, Eclipse) or Terminal:
-Mac/Linux:
+
+**Mac/Linux:**
 ```bash
 ./mvnw spring-boot:run
 ```
+
+**Windows:**
+```dos
+mvnw spring-boot:run
+```
+
 
 
