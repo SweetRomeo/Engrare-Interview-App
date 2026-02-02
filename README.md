@@ -5,58 +5,45 @@
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-**Video içeriklerini saniyeler içinde interaktif sınavlara dönüştürün.**
+**Turn video content into interactive quizzes in seconds.** *Video içeriklerini saniyeler içinde interaktif sınavlara dönüştürün.*
 
-Video2Quiz, eğitim videolarını veya herhangi bir video içeriğini analiz ederek, izleyicinin konuyu anlayıp anlamadığını ölçen otomatik testler (quiz) üreten yapay zeka destekli bir araçtır.
-
-🚀 **Canlı Demo:** [video2quiz.engrare.com](https://video2quiz.engrare.com/)
-
----
-
-## 📖 İçindekiler
-- [Proje Hakkında](#-proje-hakkında)
-- [Özellikler](#-özellikler)
-- [Teknoloji Yığını](#-teknoloji-yığını)
-- [Kurulum ve Çalıştırma](#-kurulum-ve-çalıştırma)
-- [Proje Yapısı](#-proje-yapısı)
-- [Katkıda Bulunma](#-katkıda-bulunma)
+🌍 **Language / Dil**
+[🇺🇸 English](#-english) | [🇹🇷 Türkçe](#-türkçe)
 
 ---
 
-## 🎯 Proje Hakkında
+<a name="-english"></a>
+## 🇺🇸 English
 
-Eğitim süreçlerinde "pasif izleme" eylemini "aktif öğrenme"ye dönüştürmek amacıyla geliştirilmiştir. Kullanıcı bir video linki (örneğin YouTube) girdiğinde, Video2Quiz arka planda içeriği işler ve ilgili çoktan seçmeli sorular üretir.
+### 🎯 About the Project
 
-Bu proje, frontend ve backend'in tek bir çatı altında toplandığı **Monolitik** bir mimariye sahiptir. Bu sayede karmaşık kurulum süreçlerine (npm install, webpack vb.) gerek kalmadan tek tıkla çalışır.
+**Video2Quiz** is an AI-powered tool designed to transform passive video watching into active learning. By simply entering a video link (e.g., YouTube), the application analyzes the content in the background and automatically generates relevant multiple-choice questions to test the viewer's understanding.
 
----
+This project features a **Monolithic** architecture where the frontend and backend are unified. This means **no complex setup** (like `npm install` or webpack) is required. It just works!
 
-## ✨ Özellikler
+🚀 **Live Demo:** [video2quiz.engrare.com](https://video2quiz.engrare.com/)
 
-* **🔍 Akıllı İçerik Analizi:** Video içeriğini tarar ve bağlama uygun sorular çıkarır.
-* **⚡ Tak-Çalıştır (Plug & Play):** Frontend, Spring Boot içerisine gömülüdür. Ayrı bir frontend sunucusu başlatmanız gerekmez.
-* **📱 Responsive Arayüz:** Mobil ve masaüstü cihazlarla tam uyumlu modern tasarım.
-* **🐳 Docker Ready:** Tek komutla konteynerize edilebilir ve buluta deploy edilebilir.
-* **RESTful API:** Arka plan servisleri genişletilebilir API yapısında kurgulanmıştır.
+### ✨ Key Features
 
----
+* **🔍 Smart Content Analysis:** Scans video content to generate context-aware questions.
+* **⚡ Plug & Play:** The frontend is embedded within Spring Boot. No separate frontend server needed.
+* **📱 Responsive UI:** Modern design compatible with both mobile and desktop.
+* **🐳 Docker Ready:** Containerize and deploy to the cloud with a single command.
 
-## 🛠 Teknoloji Yığını
+### 🛠 Tech Stack
 
-| Alan | Teknoloji | Açıklama |
+| Area | Technology | Description |
 | :--- | :--- | :--- |
-| **Backend** | Java 17+, Spring Boot | Ana uygulama çatısı ve REST API |
-| **Frontend** | HTML5, CSS3, JS | Thymeleaf/Static Resources ile sunulur |
-| **Build Tool** | Maven | Bağımlılık yönetimi ve derleme |
-| **Deployment** | Docker | Konteynerizasyon |
+| **Backend** | Java 17+, Spring Boot | Main framework & REST API |
+| **Frontend** | HTML5, CSS3, JS | Served via Thymeleaf/Static Resources |
+| **Build Tool** | Maven | Dependency management |
+| **Deployment** | Docker | Containerization |
 
----
+### 🚀 Installation & Run
 
-## 🚀 Kurulum ve Çalıştırma
+You only need **Java (JDK 17+)** installed on your machine. **Node.js or npm is NOT required.**
 
-Bu projeyi çalıştırmak için bilgisayarınızda sadece **Java (JDK 17 veya üzeri)** yüklü olması yeterlidir. Node.js veya npm kurulumuna **gerek yoktur.**
-
-### 1. Projeyi Klonlayın
+#### 1. Clone the Repository
 ```bash
 git clone [https://github.com/SweetRomeo/Engrare-Interview-App.git](https://github.com/SweetRomeo/Engrare-Interview-App.git)
 cd Engrare-Interview-App
