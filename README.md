@@ -108,6 +108,4 @@ Bu projeyi çalıştırmak için bilgisayarınızda sadece **Java (JDK 17 veya �
 ```bash
 git clone [https://github.com/SweetRomeo/Engrare-Interview-App.git](https://github.com/SweetRomeo/Engrare-Interview-App.git)
 cd Engrare-Interview-App
-
-
-
+```
